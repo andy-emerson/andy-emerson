@@ -1,16 +1,23 @@
-## Hi there 👋
+# Hello, world!
 
-<!--
-**andy-emerson/andy-emerson** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+My name is Andy Emerson, and I am an applied mathematician, data scientist and AI researcher. I never intended to become a software developer; however, science isn't cheap. Therefore, to make the most out of the available resources, I started building tools optimized to the specific constraints of my research environment. That process itself became an AI research project of its own, evolving the [Working Agreement](https://github.com/andy-emerson/working-agreement) for more truth-seeking human-AI collaboration. Despite containing zero code of its own, the working agreement is one of the most important tools that I have built. By leaning into the new age of agentic coding (without abandoning my preference for Knuth-inspired literate coding) while adhering closely to the pragmatic-minimalist design principle...
 
-Here are some ideas to get you started:
+>"Do everything necessary to do one thing well"
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+...I have enjoyed being able to quickly deploy effective yet interpretable tools for my lab. Below are the stories of where most of my public repos came from.
+
+## A Simple, Secure Server
+
+Many of the tools built in this way were client-side apps, relying heavily on WebAssembly and WebGPU frameworks with essentially zero server-side support. This led to the development of [Servette](https://github.com/andy-emerson/Servette), a minimalist production-grade server, which I used to serve the rest of my tools. It needed to be small enough to work on **Raspberry Pi** without exhausting even that minimal set of resources, yet still have the security of a production grade server. Being agnostic to which tool it served, I realized that this tool, despite being opinionated, was nevertheless general-purpose enough to fill a genuine gap in the ecosystem of servers (because it was more simple than most secure servers and more secure than most simple servers), and so I decided to share it with the rest of the world.
+
+## A Browser-Based Notebook IDE
+
+The original tool that it served was a browser-based notebook IDE for **Python** and **SQL**, fully client-side. However, the layout worked equally well for other tasks, and therefore I adapted to become a LöVE game engine for my wife, who is both a software developer and an avid gamer. This became [LoveIDE](https://github.com/andy-emerson/LoveIDE), and it is the first version of the IDE that I have so far made public. However, **LöVE** 11.5 is built on **LuaJIT**, which does not work on WebAssembly (and has several other limitations that frustrate game developers), so I also made [love.wasm](https://github.com/andy-emerson/love.wasm) (based on the unfinished LöVE 12 project) and [lua.wasm](https://github.com/andy-emerson/lua.wasm) (a WebAssembly version of **Lua 5.4** instead of LuaJit). Games made with this stack still build valid `.love` games while sitting comfortably between the two extremes of IDEs with no game-specific features (e.g. VS code) and IDEs that have reduced game-design to an overwhelming amount of drag-and-drop. However, lua.wasm proved to be more useful than originally intended, leading us to the most recent part of the story.
+
+## An Embeddable, Numeric Database
+
+Returning to my browser-based IDE, it was originally built on **Pyodide** because the latter comes with **DuckDB** embedded in the same worker as the parser, which makes it easy to treat SQL as a first-class citizen alongside Python, rather than the more common SQL-in-Python approach to data-intensive research. However, DuckDB is OLAP, not OLTP. This works well for data analysis, but not data collection, which in my research are occurring simultaneously. I needed an embeddable DB that could ingest fast *and* compute fast, which I could get by focusing exclusively on the use case, ordered numeric data. This led to [TallyDB](https://github.com/andy-emerson/TallyDB). By focusing on three key assumptions (append-only, numeric-only, always ordered), I stripped TallyDB down to the essentials. However, my work with LöVE taught me that I could make compute even faster by skipping the copy-in / copy-out phases, by computing *inside* the DB itself, by embedding a scripting language inside the embeddable DB. This is even faster than the DB and parser sharing a worker, as Pyodide does. This brings Lua 5.4 back into the picture; however, even embedded in the DB, Lua is not as fast as **NumPy**, which brings us to the final set of my public repos.
+
+## Numerical Packages
+
+Everyone in the ML community is familiar with **PyTorch**. However, PyTorch began as simply **Torch**, a Lua library. Lua is perfectly capable of being a fast compute scripting language. Torch died as soon as PyTorch came on the scene, not because PyTorch is better, but rather because the community is more comfortable with Python. In other words, the problem is inertia, not capability. Thankfully, as much as I love Python, I am not limited to its ecosystem. So, I decided it was time to bring Lua up to speed (pun intended), and that led to the development of [MatLua](https://github.com/andy-emerson/MatLua), a NumPy-equivalent library for Lua. This is a non-trivial research project, but thankfully, I had already done similar research before. MatLua is built on **faer**, and faer is not yet ready for WebAssembly, but this is a problem I had previously encountered with my attempt to build a fast browser-based notebook, so I had separately began work on [blas.wasm](https://github.com/andy-emerson/blas.wasm), which lays the foundation for future numeric work in WebAssembly.
