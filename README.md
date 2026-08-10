@@ -3,8 +3,8 @@ As a data scientist, I frequently find myself in need of domain-specific tools o
 ## Design Philosophy
 I build tools under three governing ideas:
 1. pragmatic minimalism (“Do everything necessary to do one thing well”),
-2. literate programming (inspired by Knuth, but adopted to the AI era), and
-3. structured collaboration with AI agents (see the [Working Agreement](https://github.com/andy-emerson/working-agreement)).
+2. literate programming (inspired by Knuth, but adapted to the AI era), and
+3. highly-structured collaboration with AI agents (see the [Working Agreement](https://github.com/andy-emerson/working-agreement)).
 
 ## Public Repos
 ### Minimal production server
