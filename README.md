@@ -14,7 +14,7 @@ I build tools under three governing ideas:
 * The original tool was a fully client-side notebook for Python and SQL. The same layout became [LoveIDE](https://LoveIDE.com). Supporting it required [love.wasm](https://github.com/andy-emerson/love.wasm) and [lua.wasm](https://github.com/andy-emerson/lua.wasm).
 
 ### Embeddable numeric database
-* The notebook needed an embeddable database that could both ingest and compute quickly on ordered numeric data. [TallyDB](https:TallyDB.com) is an append-optimized SQL database with zero-copy compute access.
+* The notebook needed an embeddable database that could both ingest and compute quickly on ordered numeric data. [TallyDB](https://TallyDB.com) is an append-optimized SQL database with zero-copy compute access.
 
 ### Numeric libraries
 * Faster in-database compute led to embedding Lua, which required a serious numeric stack. [MatLua](https://github.com/andy-emerson/MatLua) is a NumPy-shaped array and linear algebra library for Lua. [blas.wasm](https://github.com/andy-emerson/blas.wasm) provides the WebAssembly foundation for future numeric work.
