@@ -8,10 +8,10 @@ I build tools under three governing ideas:
 
 ## Public Repos
 ### Minimal production server
-* Many tools were pure client-side, so I needed a server small enough for a Raspberry Pi yet secure enough for real use. [Servette](https://Servetteorg) is a single-file pure-Python static site server.
+* Many tools were pure client-side, so I needed a server small enough for a Raspberry Pi yet secure enough for real use. [Servette](https://Servette.org) is a single-file pure-Python static site server.
 
 ### Client-side notebook and runtime
-* The original tool was a fully client-side notebook for Python and SQL. The same layout became [LoveIDE](https://LoveIDE.org.com). Supporting it required [love.wasm](https://github.com/andy-emerson/love.wasm) and [lua.wasm](https://github.com/andy-emerson/lua.wasm).
+* The original tool was a fully client-side notebook for Python and SQL. The same layout became [LoveIDE](https://LoveIDE.com). Supporting it required [love.wasm](https://github.com/andy-emerson/love.wasm) and [lua.wasm](https://github.com/andy-emerson/lua.wasm).
 
 ### Embeddable numeric database
 * The notebook needed an embeddable database that could both ingest and compute quickly on ordered numeric data. [TallyDB](https:TallyDB.com) is an append-optimized SQL database with zero-copy compute access.
