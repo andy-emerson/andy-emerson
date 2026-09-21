@@ -8,10 +8,10 @@ I build tools under three governing ideas:
 
 ## Public Repos
 ### Minimal production server
-* Many tools were pure client-side, so I needed a server small enough for a Raspberry Pi yet secure enough for real use. [Servette](https://Servette.org) is a single-file pure-Python static site server.
+* To minimize costs on rented machines, many tools needed to be pure client-side. A GET-only server can solve that problem without a large attack surface. [Servette](https://Servette.org) is a single-file pure-Python secure static site server.
 
 ### Embeddable numeric database
-* The notebook needed an embeddable database that could both ingest and compute quickly on ordered numeric data. [TallyDB](https://TallyDB.com) is an append-optimized SQL database with zero-copy compute access.
+* Some of my quantitative research required an embeddable database that could both ingest and compute quickly on ordered numeric data. [TallyDB](https://TallyDB.com) is an append-optimized SQL database with zero-copy compute access.
 
 ### Numeric libraries
 * Faster in-database compute led to embedding Lua, which required a serious numeric stack. [MatLua](https://github.com/andy-emerson/MatLua) is a NumPy-shaped array and linear algebra library for Lua. 
